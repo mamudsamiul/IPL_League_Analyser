@@ -61,6 +61,13 @@ public class IPLLeagueBowler {
 		return wkts;
 	}
 
+	public int Wickets() {
+		if (wickets.equals("-") || wickets == "")
+			wickets = "0";
+		int wkts = Integer.parseInt(wickets);
+		return wkts;
+	}
+
 	@Override
 	public String toString() {
 		return "Bowlers-- \nPosition: " + pos + " Player :" + player + " Matches: " + matches + " Innings: " + innings
