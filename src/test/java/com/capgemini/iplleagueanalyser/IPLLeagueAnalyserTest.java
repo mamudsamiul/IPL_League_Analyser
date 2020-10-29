@@ -20,6 +20,7 @@ public class IPLLeagueAnalyserTest {
 	public SortByChoice choice;
 	public List<IPLLeagueBatsman> batsManList = null;
 	public List<IPLLeagueBowler> bowlerList = null;
+	public List<IPLLeagueAllRounder> allRounderList = null;
 
 	public IPLLeagueAnalyserTest() {
 		obj = new IPLLeagueAnalyserExecuter();
@@ -208,4 +209,14 @@ public class IPLLeagueAnalyserTest {
 		Assert.assertEquals("Andre Russell", l4.get(0).Player());
 	}
 
+	@Test
+	public void givenBattingCSVfile_ShouldReturnPlayerWithMaximum100AndBestBattingAvg() {
+		try {
+			batsmen = obj.readData(BATSMEN_CSV_FILE, "BATSMEN");
+		} catch (IPLLeagueAnalyserException e) {
+			e.printStackTrace();
+		}
+		batsManList = choice.sortBychoice(Choice.MAX_100_AND_BEST_BAT_AVG, batsmen);
+		Assert.assertEquals("David Warner ", batsManList.get(0).player);
+	}
 }
