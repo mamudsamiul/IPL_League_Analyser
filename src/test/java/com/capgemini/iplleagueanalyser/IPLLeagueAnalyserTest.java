@@ -105,4 +105,15 @@ public class IPLLeagueAnalyserTest {
 		Assert.assertEquals("MS Dhoni", batsManList.get(0).player);
 	}
 
+	@Test
+	public void givenBattingCSVfile_ShouldReturnPlayerWithMaximumrunsAndBestAverage() {
+		try {
+			batsmen = obj.readData(BATSMEN_CSV_FILE, "BATSMEN");
+		} catch (IPLLeagueAnalyserException e) {
+			e.printStackTrace();
+		}
+		batsManList = choice.sortBychoice(Choice.MAX_RUNS_AND_BEST_AVG, batsmen);
+		Assert.assertEquals("David Warner ", batsManList.get(0).player);
+	}
+
 }
