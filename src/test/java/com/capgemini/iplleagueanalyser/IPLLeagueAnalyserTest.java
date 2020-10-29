@@ -127,4 +127,15 @@ public class IPLLeagueAnalyserTest {
 		Assert.assertEquals("11", bowlerList.get(0).avg);
 	}
 
+	@Test
+	public void givenBowlingCSVfileReturnTopSRBowler() {
+		try {
+			bowlers = obj.readData(BOWLERS_CSV_FILE, "BOWLERS");
+		} catch (IPLLeagueAnalyserException e) {
+			e.printStackTrace();
+		}
+		bowlerList = choice.sortBychoice(Choice.BOWL_STRIKE_RATE, bowlers);
+		Assert.assertEquals("Alzarri Joseph", bowlerList.get(0).player);
+	}
+
 }
