@@ -94,4 +94,15 @@ public class IPLLeagueAnalyserTest {
 		Assert.assertEquals("Ishant Sharma", batsManList.get(0).player);
 	}
 
+	@Test
+	public void givenBattingCSVfile_ShouldReturnPlayerWithMaximumAverageAndSR() {
+		try {
+			batsmen = obj.readData(BATSMEN_CSV_FILE, "BATSMEN");
+		} catch (IPLLeagueAnalyserException e) {
+			e.printStackTrace();
+		}
+		batsManList = choice.sortBychoice(Choice.MAX_AVG_AND_SR, batsmen);
+		Assert.assertEquals("MS Dhoni", batsManList.get(0).player);
+	}
+
 }
