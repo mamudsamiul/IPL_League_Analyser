@@ -7,7 +7,7 @@ import java.util.List;
 public class SortByChoice<T> {
 	public enum Choice {
 		BAT_AVG, STRIKE_RATE, MAX_FOURS, MAX_SIXES, MAX_BOUNDARIES_AND_SR, MAX_AVG_AND_SR, MAX_RUNS_AND_BEST_AVG,
-		BOWL_AVG;
+		BOWL_AVG, BOWL_STRIKE_RATE;
 	}
 
 	public Choice choice;
@@ -67,6 +67,10 @@ public class SortByChoice<T> {
 		}
 		case "BOWL_AVG": {
 			Collections.sort(bowlerList, Comparator.comparing(bowler -> ((IPLLeagueBowler) bowler).Average()));
+			return (List<T>) bowlerList;
+		}
+		case "BOWL_STRIKE_RATE": {
+			Collections.sort(bowlerList, Comparator.comparing(bowler -> ((IPLLeagueBowler) bowler).StrikeRate()));
 			return (List<T>) bowlerList;
 		}
 
