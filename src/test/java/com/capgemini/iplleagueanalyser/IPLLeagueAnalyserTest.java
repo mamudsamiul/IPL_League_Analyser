@@ -182,4 +182,17 @@ public class IPLLeagueAnalyserTest {
 		Assert.assertEquals("Imran Tahir", bowlerList.get(0).player);
 	}
 
+	@Test
+	public void givenBattingandbowlingfileReturnBestBattingAndBowlingAverages() {
+		try {
+			bowlers = obj.readData(BOWLERS_CSV_FILE, "BOWLERS");
+			batsmen = obj.readData(BATSMEN_CSV_FILE, "BATSMEN");
+		} catch (IPLLeagueAnalyserException e) {
+			e.printStackTrace();
+		}
+		bowlerList = choice.getAllRounderPlayers(batsmen, bowlers);
+		List<IPLLeagueAllRounder> allRounderList = choice.sortBychoice(Choice.MAX_BAT_AND_BOWL_AVG, bowlerList);
+		Assert.assertEquals("Krishnappa Gowtham", allRounderList.get(0).Player());
+	}
+
 }
