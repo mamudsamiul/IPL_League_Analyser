@@ -60,6 +60,15 @@ public class IPLLeagueBatsman {
 		return six;
 	}
 
+	public int noOfBoundaries() {
+		if (sixes.equals("-") || sixes == "")
+			sixes = "0";
+		if (fours.equals("-") || fours == "")
+			fours = "0";
+		int boundaries = Integer.parseInt(sixes) + Integer.parseInt(fours);
+		return boundaries;
+	}
+
 	@Override
 	public String toString() {
 		return "Batsman-- \nPosition: " + pos + " Player :" + player + " Matches: " + matches + " Innings: " + innings
