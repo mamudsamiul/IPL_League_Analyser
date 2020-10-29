@@ -219,4 +219,15 @@ public class IPLLeagueAnalyserTest {
 		batsManList = choice.sortBychoice(Choice.MAX_100_AND_BEST_BAT_AVG, batsmen);
 		Assert.assertEquals("David Warner ", batsManList.get(0).player);
 	}
+
+	@Test
+	public void givenBattingCSVfile_ShouldReturnPlayerWithZero100sAand50sButBestBattibgAvgs() {
+		try {
+			batsmen = obj.readData(BATSMEN_CSV_FILE, "BATSMEN");
+		} catch (IPLLeagueAnalyserException e) {
+			e.printStackTrace();
+		}
+		batsManList = choice.sortBychoice(Choice.ZERO_100S_AND_50S_BUT_BEST_BAT_AVG, batsmen);
+		Assert.assertEquals("Marcus Stoinis", batsManList.get(0).player);
+	}
 }
