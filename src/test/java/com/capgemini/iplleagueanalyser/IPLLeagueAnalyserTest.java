@@ -171,4 +171,15 @@ public class IPLLeagueAnalyserTest {
 		Assert.assertEquals("Anukul Roy", bowlerList.get(0).player);
 	}
 
+	@Test
+	public void givenBowlingCSVfileReturnTopStrikeRateBowlerWithMaximumWickets_() {
+		try {
+			bowlers = obj.readData(BOWLERS_CSV_FILE, "BOWLERS");
+		} catch (IPLLeagueAnalyserException e) {
+			e.printStackTrace();
+		}
+		bowlerList = choice.sortBychoice(Choice.MAX_WKTS_AND_BEST_AVG, bowlers);
+		Assert.assertEquals("Imran Tahir", bowlerList.get(0).player);
+	}
+
 }
