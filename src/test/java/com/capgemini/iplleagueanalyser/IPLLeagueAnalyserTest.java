@@ -195,4 +195,17 @@ public class IPLLeagueAnalyserTest {
 		Assert.assertEquals("Krishnappa Gowtham", allRounderList.get(0).Player());
 	}
 
+	@Test
+	public void givenBattingandbowlingfileReturnBestAllRounder() {
+		try {
+			bowlers = obj.readData(BOWLERS_CSV_FILE, "BOWLERS");
+			batsmen = obj.readData(BATSMEN_CSV_FILE, "BATSMEN");
+		} catch (IPLLeagueAnalyserException e) {
+			e.printStackTrace();
+		}
+		bowlerList = choice.getAllRounderPlayers(batsmen, bowlers);
+		List<IPLLeagueAllRounder> l4 = choice.sortBychoice(Choice.BEST_ALL_ROUNDER, bowlerList);
+		Assert.assertEquals("Andre Russell", l4.get(0).Player());
+	}
+
 }

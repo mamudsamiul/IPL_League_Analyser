@@ -9,7 +9,7 @@ public class SortByChoice<T> {
 	public enum Choice {
 		BAT_AVG, STRIKE_RATE, MAX_FOURS, MAX_SIXES, MAX_BOUNDARIES_AND_SR, MAX_AVG_AND_SR, MAX_RUNS_AND_BEST_AVG,
 		BOWL_AVG, BOWL_STRIKE_RATE, BOWL_ECON, BEST_SR_AND_WKTS, BEST_SR_AND_AVG_BOWL, MAX_WKTS_AND_BEST_AVG,
-		MAX_BAT_AND_BOWL_AVG;
+		MAX_BAT_AND_BOWL_AVG, BEST_ALL_ROUNDER;
 	}
 
 	public Choice choice;
@@ -103,6 +103,12 @@ public class SortByChoice<T> {
 		case "MAX_BAT_AND_BOWL_AVG": {
 			Comparator<IPLLeagueAllRounder> compareBy = Comparator.comparing(IPLLeagueAllRounder::AverageWickets)
 					.thenComparing(IPLLeagueAllRounder::AverageRuns).reversed();
+			Collections.sort(allRounderList, compareBy);
+			return (List<T>) allRounderList;
+		}
+		case "BEST_ALL_ROUNDER": {
+			Comparator<IPLLeagueAllRounder> compareBy = Comparator.comparing(IPLLeagueAllRounder::Runs)
+					.thenComparing(IPLLeagueAllRounder::Wickets).reversed();
 			Collections.sort(allRounderList, compareBy);
 			return (List<T>) allRounderList;
 		}
