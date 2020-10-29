@@ -6,7 +6,7 @@ import java.util.List;
 
 public class SortByChoice<T> {
 	public enum Choice {
-		BAT_AVG, STRIKE_RATE;
+		BAT_AVG, STRIKE_RATE, MAX_FOURS, MAX_SIXES;
 	}
 
 	public Choice choice;
@@ -27,6 +27,16 @@ public class SortByChoice<T> {
 			}
 			Collections.sort(list1,
 					Comparator.comparing(batsman -> ((IPLLeagueBatsman) batsman).StrikeRate()).reversed());
+			return (List<T>) list1;
+		}
+		case "MAX_FOURS": {
+			Collections.sort(list1,
+					Comparator.comparing(batsman -> ((IPLLeagueBatsman) batsman).noOfFours()).reversed());
+			return (List<T>) list1;
+		}
+		case "MAX_SIXES": {
+			Collections.sort(list1,
+					Comparator.comparing(batsman -> ((IPLLeagueBatsman) batsman).noOfSixes()).reversed());
 			return (List<T>) list1;
 		}
 		default: {

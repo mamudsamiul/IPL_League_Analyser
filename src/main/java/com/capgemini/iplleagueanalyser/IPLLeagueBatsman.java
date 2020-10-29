@@ -46,6 +46,20 @@ public class IPLLeagueBatsman {
 		return sr;
 	}
 
+	public int noOfFours() {
+		if (fours.equals("-") || fours == "")
+			fours = "0";
+		int four = Integer.parseInt(fours);
+		return four;
+	}
+
+	public int noOfSixes() {
+		if (sixes.equals("-") || sixes == "")
+			sixes = "0";
+		int six = Integer.parseInt(sixes);
+		return six;
+	}
+
 	@Override
 	public String toString() {
 		return "Batsman-- \nPosition: " + pos + " Player :" + player + " Matches: " + matches + " Innings: " + innings

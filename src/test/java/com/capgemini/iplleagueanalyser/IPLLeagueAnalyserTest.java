@@ -61,4 +61,26 @@ public class IPLLeagueAnalyserTest {
 		Assert.assertEquals("333.33", batsManList.get(0).strikeRate);
 	}
 
+	@Test
+	public void givenBattingCSVfile_ShouldReturnPlayerWithMaximumFours() {
+		try {
+			batsmen = obj.readData(BATSMEN_CSV_FILE, "BATSMEN");
+		} catch (IPLLeagueAnalyserException e) {
+			e.printStackTrace();
+		}
+		batsManList = choice.sortBychoice(Choice.MAX_FOURS, batsmen);
+		Assert.assertEquals("Shikhar Dhawan", batsManList.get(0).player);
+	}
+
+	@Test
+	public void givenBattingCSVfile_ShouldReturnPlayerWithMaximumSixes() {
+		try {
+			batsmen = obj.readData(BATSMEN_CSV_FILE, "BATSMEN");
+		} catch (IPLLeagueAnalyserException e) {
+			e.printStackTrace();
+		}
+		batsManList = choice.sortBychoice(Choice.MAX_SIXES, batsmen);
+		Assert.assertEquals("Andre Russell", batsManList.get(0).player);
+	}
+
 }
