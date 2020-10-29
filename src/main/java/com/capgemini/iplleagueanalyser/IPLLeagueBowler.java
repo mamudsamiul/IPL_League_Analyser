@@ -44,6 +44,14 @@ public class IPLLeagueBowler {
 		return sr;
 	}
 
+	public double EconomyRate() {
+		if (economyRate.equals("-") || economyRate == "") {
+			this.economyRate = "9999";
+		}
+		double econ = Double.parseDouble(economyRate);
+		return econ;
+	}
+
 	@Override
 	public String toString() {
 		return "Bowlers-- \nPosition: " + pos + " Player :" + player + " Matches: " + matches + " Innings: " + innings
