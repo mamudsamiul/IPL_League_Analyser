@@ -9,7 +9,7 @@ public class SortByChoice<T> {
 	public enum Choice {
 		BAT_AVG, STRIKE_RATE, MAX_FOURS, MAX_SIXES, MAX_BOUNDARIES_AND_SR, MAX_AVG_AND_SR, MAX_RUNS_AND_BEST_AVG,
 		BOWL_AVG, BOWL_STRIKE_RATE, BOWL_ECON, BEST_SR_AND_WKTS, BEST_SR_AND_AVG_BOWL, MAX_WKTS_AND_BEST_AVG,
-		MAX_BAT_AND_BOWL_AVG, BEST_ALL_ROUNDER, MAX_100_AND_BEST_BAT_AVG;
+		MAX_BAT_AND_BOWL_AVG, BEST_ALL_ROUNDER, MAX_100_AND_BEST_BAT_AVG, ZERO_100S_AND_50S_BUT_BEST_BAT_AVG;
 	}
 
 	public Choice choice;
@@ -117,6 +117,17 @@ public class SortByChoice<T> {
 					.thenComparing(IPLLeagueBatsman::Average);
 			Collections.sort(batsmanList, compareBy.reversed());
 			return (List<T>) batsmanList;
+		}
+		case "ZERO_100S_AND_50S_BUT_BEST_BAT_AVG": {
+			List<IPLLeagueBatsman> batsManList = new ArrayList<IPLLeagueBatsman>();
+			for (IPLLeagueBatsman b : batsmanList) {
+				if (b.Hundreds() == 0 && b.Fifties() == 0) {
+					batsManList.add(b);
+				}
+			}
+			Collections.sort(batsManList,
+					Comparator.comparing(batsman -> ((IPLLeagueBatsman) batsman).Average()).reversed());
+			return (List<T>) batsManList;
 		}
 
 		default: {

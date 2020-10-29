@@ -83,6 +83,13 @@ public class IPLLeagueBatsman {
 		return hundred;
 	}
 
+	public int Fifties() {
+		if (fifties.equals("-") || fifties == "")
+			fifties = "0";
+		int fifty = Integer.parseInt(fifties);
+		return fifty;
+	}
+
 	@Override
 	public String toString() {
 		return "Batsman-- \nPosition: " + pos + " Player :" + player + " Matches: " + matches + " Innings: " + innings
