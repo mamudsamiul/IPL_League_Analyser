@@ -30,6 +30,13 @@ public class IPLLeagueBowler {
 	@CsvBindByName(column = "5w")
 	public String fiveWickets;
 
+	public double Average() {
+		if (avg.equals("-") || avg == "")
+			this.avg = "9999";
+		double average = Double.parseDouble(this.avg);
+		return average;
+	}
+
 	@Override
 	public String toString() {
 		return "Bowlers-- \nPosition: " + pos + " Player :" + player + " Matches: " + matches + " Innings: " + innings
