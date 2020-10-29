@@ -149,4 +149,15 @@ public class IPLLeagueAnalyserTest {
 		Assert.assertEquals("Shivam Dube", bowlerList.get(0).player);
 	}
 
+	@Test
+	public void givenBowlingCSVfileReturnTopStrikeRateBowlerWithMaximumWickets() {
+		try {
+			bowlers = obj.readData(BOWLERS_CSV_FILE, "BOWLERS");
+		} catch (IPLLeagueAnalyserException e) {
+			e.printStackTrace();
+		}
+		bowlerList = choice.sortBychoice(Choice.BEST_SR_AND_WKTS, bowlers);
+		Assert.assertEquals("Alzarri Joseph", bowlerList.get(0).player);
+	}
+
 }
