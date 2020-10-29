@@ -1,0 +1,6 @@
+target/*
+logs/logfile.log
+.settings
+.project
+.classpath
+pom.xml
